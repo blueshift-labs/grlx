@@ -94,6 +94,7 @@ func ConnectSprout() {
 		ServerName: FarmerInterface,
 		RootCAs:    certPool,
 		MinVersion: tls.VersionTLS12,
+		InsecureSkipVerify: true,
 	}
 	nc, err := nats.Connect(FarmerBusURL, nats.Secure(config), opt,
 		nats.MaxReconnects(-1),

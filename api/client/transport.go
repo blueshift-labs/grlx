@@ -48,6 +48,7 @@ func CreateSecureTransport() error {
 		TLSClientConfig: &tls.Config{
 			RootCAs:    certPool,
 			MinVersion: tls.VersionTLS12,
+			InsecureSkipVerify: true,
 		},
 	}
 	APIClient.Transport = apiTransport

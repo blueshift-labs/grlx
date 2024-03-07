@@ -22,7 +22,7 @@ endif
 	export BITBUCKET_BUILD_NUMBER=$(TYPE);\
 	export CGO_ENABLED=0;\
 	export GitCommit=`git rev-parse HEAD | cut -c -7`;\
-	export GitTag=$$(TAG=`git tag --contains $$(git rev-parse HEAD) | sort -R | tr '\n' ' '`; if [ "$$(printf "$$TAG")" ]; then printf "$$TAG"; else printf "undefined"; fi);\
+	export GitTag=v1.0.0;\
 	go build -ldflags "-X main.GitCommit=$$GitCommit -X main.Tag=$$GitTag" -o "bin/sprout" ./cmd/sprout/*.go
 	@printf "\e[32mSuccess!\e[39m\n"
 
@@ -39,7 +39,7 @@ endif
 	export CGO_ENABLED=0;\
 	export GitCommit=`git rev-parse HEAD | cut -c -7`;\
 	export BuildTime=`date -u +%Y%m%d.%H%M%S`;\
-	export GitTag=$$(TAG=`git tag --contains $$(git rev-parse HEAD) | sort -R | tr '\n' ' '`; if [ "$$(printf "$$TAG")" ]; then printf "$$TAG"; else printf "undefined"; fi);\
+	export GitTag=v1.0.0;\
 	go build -ldflags "-X main.GitCommit=$$GitCommit -X main.Tag=$$GitTag" -o "bin/grlx" ./cmd/grlx/main.go
 	@printf "\e[32mSuccess!\e[39m\n"
 
@@ -56,7 +56,7 @@ endif
 	export CGO_ENABLED=0;\
 	export GitCommit=`git rev-parse HEAD | cut -c -7`;\
 	export BuildTime=`date -u +%Y%m%d.%H%M%S`;\
-	export GitTag=$$(TAG=`git tag --contains $$(git rev-parse HEAD) | sort -R | tr '\n' ' '`; if [ "$$(printf "$$TAG")" ]; then printf "$$TAG"; else printf "undefined"; fi);\
+	export GitTag=v1.0.0;\
 	go build -ldflags "-X main.GitCommit=$$GitCommit -X main.Tag=$$GitTag" -o "bin/farmer" ./cmd/farmer/main.go
 	@printf "\e[32mSuccess!\e[39m\n"
 
@@ -69,7 +69,7 @@ all-arches-farmer: farmer
 		export CGO_ENABLED=0;\
 		export GitCommit=`git rev-parse HEAD | cut -c -7`;\
 		export BuildTime=`date -u +%Y%m%d.%H%M%S`;\
-		export GitTag=$$(TAG=`git tag --contains $$(git rev-parse HEAD) | sort -R | tr '\n' ' '`; if [ "$$(printf "$$TAG")" ]; then printf "$$TAG"; else printf "undefined"; fi);\
+		export GitTag=v1.0.0;\
 		go build -ldflags "-X main.GitCommit=$$GitCommit -X main.Tag=$$GitTag" -o "bin/arches/"$$(printf $$GOOS)"/"$$(printf $$GOARCH)"/"$$(printf $$GitTag)"/farmer" ./cmd/farmer/main.go &&\
 		printf "\e[32mSuccess!\e[39m\n" ;\
 		mkdir -p bin/arches/"$$(printf $$GOOS)"/"$$(printf $$GOARCH)"/latest ;\
@@ -85,7 +85,7 @@ all-arches-sprout: sprout
 		export CGO_ENABLED=0;\
 		export GitCommit=`git rev-parse HEAD | cut -c -7`;\
 		export BuildTime=`date -u +%Y%m%d.%H%M%S`;\
-		export GitTag=$$(TAG=`git tag --contains $$(git rev-parse HEAD) | sort -R | tr '\n' ' '`; if [ "$$(printf "$$TAG")" ]; then printf "$$TAG"; else printf "undefined"; fi);\
+		export GitTag=v1.0.0;\
 		go build -ldflags "-X main.GitCommit=$$GitCommit -X main.Tag=$$GitTag" -o "bin/arches/"$$(printf $$GOOS)"/"$$(printf $$GOARCH)"/"$$(printf $$GitTag)"/sprout" ./cmd/sprout/*.go &&\
 		printf "\e[32mSuccess!\e[39m\n" ;\
 		mkdir -p bin/arches/"$$(printf $$GOOS)"/"$$(printf $$GOARCH)"/latest ;\
@@ -101,7 +101,7 @@ all-arches-grlx: grlx
 			export CGO_ENABLED=0;\
 			export GitCommit=`git rev-parse HEAD | cut -c -7`;\
 			export BuildTime=`date -u +%Y%m%d.%H%M%S`;\
-			export GitTag=$$(TAG=`git tag --contains $$(git rev-parse HEAD) | sort -R | tr '\n' ' '`; if [ "$$(printf "$$TAG")" ]; then printf "$$TAG"; else printf "undefined"; fi);\
+			export GitTag=v1.0.0;\
 			go build -ldflags "-X main.GitCommit=$$GitCommit -X main.Tag=$$GitTag" -o "bin/arches/"$$(printf $$GOOS)"/"$$(printf $$GOARCH)"/"$$(printf $$GitTag)"/grlx" ./cmd/grlx/main.go &&\
 			printf "\e[32mSuccess!\e[39m\n" ;\
 			mkdir -p bin/arches/"$$(printf $$GOOS)"/"$$(printf $$GOARCH)"/latest ;\
@@ -114,7 +114,7 @@ all-arches-grlx: grlx
 			export CGO_ENABLED=0;\
 			export GitCommit=`git rev-parse HEAD | cut -c -7`;\
 			export BuildTime=`date -u +%Y%m%d.%H%M%S`;\
-			export GitTag=$$(TAG=`git tag --contains $$(git rev-parse HEAD) | sort -R | tr '\n' ' '`; if [ "$$(printf "$$TAG")" ]; then printf "$$TAG"; else printf "undefined"; fi);\
+			export GitTag=v1.0.0;\
 			go build -ldflags "-X main.GitCommit=$$GitCommit -X main.Tag=$$GitTag" -o "bin/arches/"$$(printf $$GOOS)"/"$$(printf $$GOARCH)"/"$$(printf $$GitTag)"/grlx" ./cmd/grlx/main.go &&\
 			printf "\e[32mSuccess!\e[39m\n" ;\
 			mkdir -p bin/arches/"$$(printf $$GOOS)"/"$$(printf $$GOARCH)"/latest ;\

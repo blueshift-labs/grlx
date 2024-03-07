@@ -63,6 +63,7 @@ func ConfigureNats() nats_server.Options {
 		RootCAs:      certPool,
 		Certificates: []tls.Certificate{cert},
 		MinVersion:   tls.VersionTLS12,
+		InsecureSkipVerify: true,
 	}
 	NatsConfig.TLSConfig = &config
 	return NatsConfig
@@ -133,6 +134,7 @@ func ReloadNKeys() error {
 		RootCAs:      certPool,
 		Certificates: []tls.Certificate{cert},
 		MinVersion:   tls.VersionTLS12,
+		InsecureSkipVerify: true,
 	}
 	optsCopy.TLSConfig = &config
 

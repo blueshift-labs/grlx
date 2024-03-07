@@ -31,10 +31,9 @@ func init() {
 }
 
 type MethodProps struct {
-	Key         string
-	Type        string
-	IsReq       bool
-	Description string
+	Key   string
+	Type  string
+	IsReq bool
 }
 
 type MethodPropsSet []MethodProps

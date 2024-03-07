@@ -33,6 +33,7 @@ func NewNatsClient() (*nats.Conn, error) {
 		ServerName: config.FarmerInterface,
 		RootCAs:    certPool,
 		MinVersion: tls.VersionTLS12,
+		InsecureSkipVerify: true,
 	}
 
 	// TODO: add a disconnect handler to reconnect

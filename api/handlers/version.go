@@ -16,6 +16,7 @@ func SetBuildVersion(v types.Version) {
 }
 
 func GetVersion(w http.ResponseWriter, _ *http.Request) {
+
 	jr, err := json.Marshal(buildVersion)
 	if err != nil {
 		log.Error(err)

@@ -102,7 +102,7 @@ func StartAPIServer() {
 		}
 	}()
 
-	log.Tracef("API Server started on %s\n", FarmerInterface+":"+FarmerAPIPort)
+	log.Debugf("API Server started on %s\n", FarmerInterface+":"+FarmerAPIPort)
 }
 
 type logger struct{}
@@ -137,7 +137,7 @@ func RunNATSServer() {
 	if !s.ReadyForConnections(10 * time.Second) {
 		log.Panicf("Unable to start NATS Server")
 	}
-	// s.ReloadOptions(opts)
+	//s.ReloadOptions(opts)
 	pki.SetNATSServer(s)
 	pki.ReloadNKeys()
 }
@@ -172,6 +172,7 @@ func ConnectFarmer() {
 		ServerName: FarmerInterface,
 		RootCAs:    certPool,
 		MinVersion: tls.VersionTLS12,
+		InsecureSkipVerify: true,
 	}
 	log.Debug("Attempting to pair Farmer to NATS bus.")
 	nc, err := nats.Connect(BusURL,

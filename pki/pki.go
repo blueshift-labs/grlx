@@ -413,6 +413,7 @@ func LoadRootCA(binary string) error {
 		TLSClientConfig: &tls.Config{
 			RootCAs:    certPool,
 			MinVersion: tls.VersionTLS12,
+			InsecureSkipVerify: true,
 		},
 	}
 	nkeyClient.Transport = nkeyTransport
